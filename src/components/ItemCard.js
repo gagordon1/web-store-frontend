@@ -16,6 +16,7 @@ const ItemCardContainer = styled.div`
   background: ${colors.white};
   border-radius: 7px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  margin : auto;
 `
 
 const ImagePreview = styled.img`
