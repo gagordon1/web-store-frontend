@@ -5,13 +5,16 @@ import ContactPage from './pages/Contact/ContactPage';
 import StorePage from './pages/Store/StorePage';
 import { SectionSeparator }  from './components/SectionSeparator';
 import { BottomSection } from './components/BottomSection'
+import styled from 'styled-components';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 
-
+const RouteContainer = styled.div`
+  min-height:550px;
+`
 
 function App() {
   return (
@@ -20,11 +23,13 @@ function App() {
         <Router>
           <Navbar/>
           <SectionSeparator/>
-          <Routes>
-            <Route path="/about" element={<AboutPage/>}/>
-            <Route path="/contact" element={<ContactPage/>}/>
-            <Route path="/" element={<StorePage/>}/>
-          </Routes>
+          <RouteContainer>
+            <Routes>
+              <Route path="/about" element={<AboutPage/>}/>
+              <Route path="/contact" element={<ContactPage/>}/>
+              <Route path="/" element={<StorePage/>}/>
+            </Routes>
+          </RouteContainer>
           <BottomSection/>
         </Router>
 
