@@ -1,9 +1,7 @@
-import { storeName } from '../config/StoreInfo'
-import styled from 'styled-components'
-import { Media, withBreakpoints } from 'react-breakpoints';
+import { storeName } from '../config/StoreInfo';
 import React from 'react';
 import { DesktopMenu } from './DesktopMenu';
-import { NavbarContainer, StoreTitle, MenuContainer, StyledMenuImage } from './NavbarStyled'
+import { NavbarContainer, StoreTitle, MenuContainer } from './NavbarStyled'
 
 export const menuItems = {
   "about" : "/about",
@@ -15,7 +13,6 @@ export const menuItems = {
 
 class Navbar extends React.Component {
   render() {
-    const { breakpoints, currentBreakpoint } = this.props;
 
     return (
       <NavbarContainer>
@@ -28,4 +25,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default withBreakpoints(Navbar)
+export default Navbar
