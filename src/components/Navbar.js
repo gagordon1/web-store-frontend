@@ -1,10 +1,9 @@
 import { storeName } from '../config/StoreInfo'
 import styled from 'styled-components'
 import { Media, withBreakpoints } from 'react-breakpoints';
-import TabletMenu from '../assets/tabletMenu.svg'
 import React from 'react';
 import { DesktopMenu } from './DesktopMenu';
-import { NavbarContainer, StoreTitle, MenuContainer } from './NavbarStyled'
+import { NavbarContainer, StoreTitle, MenuContainer, StyledMenuImage } from './NavbarStyled'
 
 export const menuItems = {
   "about" : "/about",
@@ -22,12 +21,7 @@ class Navbar extends React.Component {
       <NavbarContainer>
         <StoreTitle> {storeName} </StoreTitle>
         <MenuContainer>
-          {
-            breakpoints[currentBreakpoint] > breakpoints.tablet?
-             <DesktopMenu/>
-             :
-             <img src={TabletMenu} alt="menu"/>
-          }
+            <DesktopMenu/>
         </MenuContainer>
       </NavbarContainer>
     )

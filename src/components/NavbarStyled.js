@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../style/Theme'
 
 export const DesktopMenuContainer = styled.div`
   display : flex;
@@ -19,6 +20,14 @@ export const StoreTitle = styled.h1`
 `
 export const MenuContainer = styled.div`
   justify-self : end;
-  align-self: center;
   margin-right: 40px;
+  align-self: center;
+  @media (max-width: ${breakpoints.tablet}px){
+    justify-self: center;
+    margin: auto;
+    grid-row-start: 2;
+    grid-column-start: 2;
+  }
+
+
 `
