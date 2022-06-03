@@ -4,6 +4,7 @@ import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import StorePage from './pages/Store/StorePage';
 import { SectionSeparator }  from './components/SectionSeparator';
+import { BottomSection } from './components/BottomSection'
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,7 +25,7 @@ function App() {
             <Route path="/contact" element={<ContactPage/>}/>
             <Route path="/" element={<StorePage/>}/>
           </Routes>
-
+          <BottomSection/>
         </Router>
 
     </div>
