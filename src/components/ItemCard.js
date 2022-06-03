@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, breakpoints } from '../style/Theme'
+import { colors } from '../style/Theme'
 import { MenuItem } from './MenuItem'
 
 //
@@ -34,7 +34,9 @@ const ItemCardLine = styled.div`
   border: 1px solid ${colors.backgroundColor};
 `
 const ItemTextContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
+  font-size: 13px;
+  padding: 10px;
 `
 
 export default function ItemCard (props) {
@@ -44,7 +46,7 @@ export default function ItemCard (props) {
       <ImagePreview src={props.thumbnail}/>
       <ItemCardLine/>
       <ItemTextContainer>
-        <MenuItem route="/" item={props.name}/>
+        <MenuItem route={"/product"} item={props.name}/>
         <div> ${props.retailPrice} </div>
       </ItemTextContainer>
     </ItemCardContainer>

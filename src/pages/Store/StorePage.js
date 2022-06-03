@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ItemCard from '../../components/ItemCard'
+import Loader from '../../components/Loader'
 import { ItemCardsContainer } from './StorePageStyled'
 
 export default function StorePage() {
@@ -9,32 +10,31 @@ export default function StorePage() {
 
   const [loading, setLoading] = useState(false)
 
-
   useEffect(() => {
     setLoading(true);
     axios.get('/products')
     .then((resp) => {
       setStore(resp.data);
       setLoading(false);
-      console.log(resp.data);
     });
 
   }, [setStore]);
 
-  return (
-    <div>
-      <ItemCardsContainer >
 
-        {store.map(item => <ItemCard
-              key={item.id}
-              name={item.name}
-              thumbnail={item.thumbnail}
-              retailPrice={item.retailPrice}
-            /> )}
+  if (loading){
+    return (<Loader/>)
+  }
+  return (<ItemCardsContainer >
 
-      </ItemCardsContainer >
-    </div>
+            {store.map(item => <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  thumbnail={item.thumbnail}
+                  retailPrice={item.retailPrice}
+                /> )}
 
-  )
+          </ItemCardsContainer >
+        )
 
 }
