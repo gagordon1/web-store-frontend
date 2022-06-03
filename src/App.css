@@ -22,3 +22,8 @@ body{
 .default-link:hover{
   text-decoration: underline;
 }
+
+h1{
+  display : inline-block;
+  align-self: center;
+}
