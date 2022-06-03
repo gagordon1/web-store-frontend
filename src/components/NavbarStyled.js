@@ -12,6 +12,7 @@ export const NavbarContainer = styled.div`
   margin-top: 20px;
   display : grid;
   grid-template-columns: repeat(3, 1fr);
+  width: 100%;
   max-width: ${breakpoints.desktop}px;
   margin-left: auto;
   margin-right: auto;

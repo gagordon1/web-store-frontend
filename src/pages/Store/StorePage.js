@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ItemCard from '../../components/ItemCard'
 
 export default function StorePage() {
 
-  const [store, setStore] = useState([{"name" : "Elvis"}]);
+  const [store, setStore] = useState([]);
 
   const [loading, setLoading] = useState(false)
 
@@ -20,7 +21,12 @@ export default function StorePage() {
   return (
     <div>
 
-      {store.map(item => <li key={item.id}> {item.name} </li> )}
+      {store.map(item => <ItemCard
+            key={item.id}
+            name={item.name}
+            thumbnail={item.thumbnail}
+            retailPrice={item.retailPrice}
+          /> )}
 
     </div>
 
