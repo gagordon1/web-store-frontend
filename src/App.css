@@ -8,6 +8,14 @@ body{
   background-color : #ECECEC;
   font-family : 'DM Mono';
   color : #161616;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  top: 0px;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
 }
 
 .default-link{
@@ -26,4 +34,5 @@ body{
 h1{
   display : inline-block;
   align-self: center;
+  margin: 0;
 }

@@ -26,9 +26,10 @@ const ImagePreview = styled.img`
 `
 
 const ItemCardLine = styled.div`
-  width: 250px;
+  width: 99.25%;
+  justify-content: left;
   height: 0px;
-  border: 1px solid ${colors.darkGray};
+  border: 1px solid ${colors.backgroundColor};
 `
 const ItemTextContainer = styled.div`
   margin-top: 20px;

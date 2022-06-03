@@ -15,5 +15,6 @@ export const colors = {
   textColor : '#161616',
   black : '#000000',
   white : '#FFFFFF',
-  backgroundColor : '#ECECEC'
+  backgroundColor : '#ECECEC',
+  backgroundLineColor : '#BEBEBE'
 }

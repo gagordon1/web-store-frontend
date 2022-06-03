@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { breakpoints } from '../../style/Theme'
 
-export const StorePageContainer = styled.div`
+export const ItemCardsContainer = styled.div`
   display : grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
