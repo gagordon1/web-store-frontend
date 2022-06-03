@@ -9,3 +9,7 @@ export const breakpoints = {
   desktopLarge: 1500,
   desktopWide: 1920,
 }
+
+export const colors = {
+  textColor : '#161616'
+}

@@ -1,11 +1,9 @@
-
+import { Link } from 'react-router-dom';
 
 export const MenuItem = (props) =>{
 
   return (
-    <div>
-      <h3> {props.item} </h3>
-    </div>
+    <Link to={props.route} class="default-link"> {props.item} </Link>
   )
 
 }

@@ -6,5 +6,19 @@
 
 body{
   background-color : #ECECEC;
-  font-family : 'DM Mono'
+  font-family : 'DM Mono';
+  color : #161616;
+}
+
+.default-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+.default-link: visited{
+  color: inherit;
+}
+
+.default-link:hover{
+  text-decoration: underline;
 }
