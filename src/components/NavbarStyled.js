@@ -12,6 +12,9 @@ export const NavbarContainer = styled.div`
   margin-top: 20px;
   display : grid;
   grid-template-columns: repeat(3, 1fr);
+  max-width: ${breakpoints.desktop}px;
+  margin-left: auto;
+  margin-right: auto;
 
 `
 export const StoreTitle = styled.h1`
@@ -28,6 +31,4 @@ export const MenuContainer = styled.div`
     grid-row-start: 2;
     grid-column-start: 2;
   }
-
-
 `
