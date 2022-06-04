@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import StorePage from './pages/Store/StorePage';
-import SizeAndDetails from './pages/Checkout/SizeAndDetails';
 import Checkout from './pages/Checkout/Checkout';
 import { SectionSeparator }  from './components/SectionSeparator';
 import { BottomSection } from './components/BottomSection'
@@ -16,6 +15,7 @@ import {
 
 const RouteContainer = styled.div`
   min-height:550px;
+  margin-top: 40px;
 `
 
 function App() {

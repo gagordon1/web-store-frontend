@@ -1,12 +1,40 @@
 import styled from 'styled-components';
+import { breakpoints } from '../../style/Theme';
 
 export const SizeAndDetailsContainer = styled.div`
   display : grid;
-  grid-template-columns: 2;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  @media (max-width: ${breakpoints.tablet}px){
+    grid-template-columns: 1fr;
+  }
 
 `
 
 export const CheckoutPageImage = styled.img`
-  width : 250px;
-  height : auto;
+  width: 400px;
+  height: auto;
+  margin-left : auto;
+  margin-right : auto;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 7px;
+`
+
+export const SizeSelect = styled.select`
+  border : none;
+  width: 80%;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 7px;
+`
+
+
+export const FormContainer = styled.div`
+  width : 300px;
+  text-align : left;
+`
+
+export const DescriptionContainer = styled.div`
+  width : 300px;
+  text-align : left;
 `

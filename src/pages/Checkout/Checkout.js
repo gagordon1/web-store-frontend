@@ -39,7 +39,7 @@ export default function Checkout(){
       });
 
 
-    }, [setProduct]);
+    }, [setProduct, id, setLoading]);
 
     if (loading){
       return <Loader/>

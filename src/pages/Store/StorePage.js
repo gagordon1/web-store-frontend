@@ -31,7 +31,7 @@ export default function StorePage() {
   }
   return (<ItemCardsContainer >
 
-            {store.map(item => <ItemCard
+            {store?.map(item => <ItemCard
                   key={item.id}
                   id={item.id}
                   name={item.name}

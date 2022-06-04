@@ -6,7 +6,6 @@ export const ItemCardsContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
   width: 100%;
-  margin-top: 40px;
   @media (max-width: ${breakpoints.tabletLandscape}px){
     grid-template-columns: repeat(3, 1fr);
   }
