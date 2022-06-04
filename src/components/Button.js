@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../style/Theme';
+import { colors, fontSizes } from '../style/Theme';
 
 const ButtonContainer = styled.button`
   width: 313px;
@@ -10,14 +10,16 @@ const ButtonContainer = styled.button`
   font-family : inherit;
   margin-left : auto;
   margin-right : auto;
+  font-size : ${fontSizes.smallText};
   &:hover{
-    filter: drop-shadow(4px 4px 4px ${colors.darkGray});
+    filter: drop-shadow(1px 1px 1px ${colors.darkGray});
+    cursor: pointer;
   }
 `
 
 
-export default function Button(){
+export default function Button(props){
   return (
-    <ButtonContainer> Purchase </ButtonContainer>
+    <ButtonContainer onclick={props.onclick}> Purchase </ButtonContainer>
   )
 }

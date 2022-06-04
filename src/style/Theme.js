@@ -18,3 +18,7 @@ export const colors = {
   backgroundColor : '#ECECEC',
   backgroundLineColor : '#BEBEBE'
 }
+
+export const fontSizes = {
+  smallText : '14px'
+}
