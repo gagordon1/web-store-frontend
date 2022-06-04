@@ -3,7 +3,8 @@ import Navbar from './components/Navbar';
 import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import StorePage from './pages/Store/StorePage';
-import SizeAndDetails from './pages/Product/SizeAndDetails'
+import SizeAndDetails from './pages/Checkout/SizeAndDetails';
+import Checkout from './pages/Checkout/Checkout';
 import { SectionSeparator }  from './components/SectionSeparator';
 import { BottomSection } from './components/BottomSection'
 import styled from 'styled-components';
@@ -29,7 +30,7 @@ function App() {
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/contact" element={<ContactPage/>}/>
               <Route path="/" element={<StorePage/>}/>
-              <Route path="/product/:id" element={<SizeAndDetails/>} />
+              <Route path="/product/:id" element={<Checkout/>} />
             </Routes>
           </RouteContainer>
           <BottomSection/>

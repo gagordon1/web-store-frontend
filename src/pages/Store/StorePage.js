@@ -16,8 +16,11 @@ export default function StorePage() {
     .then((resp) => {
       setStore(resp.data);
       setLoading(false);
-
+    }).catch(error => {
+      console.log(error);
+      setLoading(false);
     });
+
 
 
   }, [setStore]);

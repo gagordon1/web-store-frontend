@@ -1,1 +1,1 @@
-export const storeName = "Faucet99";
+export const storeName = "My Store";
