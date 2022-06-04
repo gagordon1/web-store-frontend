@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakpoints } from '../../style/Theme';
 
-export const SizeAndDetailsContainer = styled.div`
+export const CheckoutContainer = styled.div`
   display : grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
@@ -22,11 +22,17 @@ export const CheckoutPageImage = styled.img`
 
 
 export const FormContainer = styled.div`
-  width : 350px;
+  width : 400px;
   text-align : left;
 `
 
 export const DescriptionContainer = styled.div`
   width : 350px;
   text-align : left;
+`
+
+export const CountryAndState = styled.div`
+  display : flex;
+  justify-content : space-between;
+  width : 100%;
 `

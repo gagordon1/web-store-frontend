@@ -20,6 +20,6 @@ const ButtonContainer = styled.button`
 
 export default function Button(props){
   return (
-    <ButtonContainer onclick={props.onclick}> Purchase </ButtonContainer>
+    <ButtonContainer onClick={props.onClick}> {props.text} </ButtonContainer>
   )
 }

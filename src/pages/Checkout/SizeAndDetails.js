@@ -1,23 +1,18 @@
-import { SizeAndDetailsContainer, CheckoutPageImage,
+import { CheckoutContainer, CheckoutPageImage,
  DescriptionContainer, FormContainer} from './CheckoutStyled';
- import React, { useState } from 'react';
 
- import { DropdownMenu } from '../../components/DropdownMenu';
+ import { ProductImageAndTitle } from './ProductImageAndTitle';
+
+import { DropdownMenu } from '../../components/DropdownMenu';
 
 import { itemDescriptions } from '../../config/StoreInfo';
 
 export default function SizeAndDetails(props){
 
 
-    const [size, setSize] = useState();
-
-
     return (
-      <SizeAndDetailsContainer>
-        <div>
-          <CheckoutPageImage src={props.product.thumbnail}/>
-            <h3> {props.product.name} </h3>
-        </div>
+      <CheckoutContainer>
+        <ProductImageAndTitle product={props.product}/>
         <div>
           <FormContainer>
             <h3> Size </h3>
@@ -25,7 +20,8 @@ export default function SizeAndDetails(props){
                   height="70px"
                   width="200px"
                   options={props.product.availableSizes}
-                  onChange={e => setSize(e.target.value)}
+                  onChange={e => props.setSize(e.target.value)}
+                  placeholder="Select"
                   />
           </FormContainer>
           <DescriptionContainer>
@@ -39,6 +35,6 @@ export default function SizeAndDetails(props){
           </DescriptionContainer>
 
         </div>
-      </SizeAndDetailsContainer>
+      </CheckoutContainer>
     )
 }
