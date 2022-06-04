@@ -20,21 +20,13 @@ export const CheckoutPageImage = styled.img`
   border-radius: 7px;
 `
 
-export const SizeSelect = styled.select`
-  border : none;
-  width: 80%;
-  height: 40px;
-  background: #FFFFFF;
-  border-radius: 7px;
-`
-
 
 export const FormContainer = styled.div`
-  width : 300px;
+  width : 350px;
   text-align : left;
 `
 
 export const DescriptionContainer = styled.div`
-  width : 300px;
+  width : 350px;
   text-align : left;
 `

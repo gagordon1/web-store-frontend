@@ -23,7 +23,7 @@ export default function StorePage() {
 
 
 
-  }, [setStore]);
+  }, [setStore, setLoading]);
 
 
   if (loading){
