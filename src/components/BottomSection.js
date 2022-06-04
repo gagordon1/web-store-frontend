@@ -22,7 +22,7 @@ export const BottomSection = () =>{
     <BottomSectionContainer>
       <SectionSeparator/>
       <Footer>
-        <h6>© {storeName} {new Date().getFullYear()}</h6>
+        <h6>Copyright ©{new Date().getFullYear()} {storeName} </h6>
       </Footer>
     </BottomSectionContainer>
   )

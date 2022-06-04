@@ -46,7 +46,7 @@ export default function ItemCard (props) {
       <ImagePreview src={props.thumbnail}/>
       <ItemCardLine/>
       <ItemTextContainer>
-        <MenuItem route={"/product"} item={props.name}/>
+        <MenuItem route={"/product/" + props.id} item={props.name}/>
         <div> ${props.retailPrice} </div>
       </ItemTextContainer>
     </ItemCardContainer>

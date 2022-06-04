@@ -29,8 +29,7 @@ function App() {
               <Route path="/about" element={<AboutPage/>}/>
               <Route path="/contact" element={<ContactPage/>}/>
               <Route path="/" element={<StorePage/>}/>
-              <Route path="/product" element={SizeAndDetails} />
-
+              <Route path="/product/:id" element={<SizeAndDetails/>} />
             </Routes>
           </RouteContainer>
           <BottomSection/>
