@@ -28,14 +28,14 @@ export default function CountryAndStateForm(props){
           onChange={event => {
                 let newShippingInfo = {...props.shippingInfo};
                 newShippingInfo["country"] = event.target.value;
-                newShippingInfo["state"] = "none";
+                newShippingInfo["state"] = "";
                 props.setShippingInfo(newShippingInfo)
               }}
           placeholder={"Country / Region"}
           />
           <DropdownMenu
             disabled={
-              props.shippingInfo.country=== "none" ||
+              props.shippingInfo.country=== "" ||
               props.regions[props.shippingInfo.country]?.states === null
             }
             height={props.height}

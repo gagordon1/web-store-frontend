@@ -65,7 +65,7 @@ export default function ShippingInfoForm(props){
                   console.log(newShippingInfo.newsAndOffers)
                 }
           } />
-          <label for="offers"> Email me with drop alerts {props.shippingInfo.newsAndOffers}</label>
+          <label htmlFor="offers"> Email me with drop alerts {props.shippingInfo.newsAndOffers}</label>
         </NewsCheckbox>
 
 

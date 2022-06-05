@@ -32,27 +32,43 @@ export default function Checkout(){
     const [page, setPage] = useState("size");
 
     const [shippingInfo, setShippingInfo] = useState({
-      firstName : "none",
-      lastName : "none",
-      email : "none",
-      address : "none",
-      suite : "none",
-      city : "none",
-      country : "none",
-      state : "none",
-      zipCode : "none",
+      firstName : "",
+      lastName : "",
+      email : "",
+      address : "",
+      suite : "",
+      city : "",
+      country : "",
+      state : "",
+      zipCode : "",
       newsAndOffers : false
     })
 
-    const [size, setSize] = useState("none");
+    const [size, setSize] = useState("");
 
     const [product, setProduct] = useState({});
 
     const [loading, setLoading] = useState(false);
 
+    function checkShippingInfo(){
+      //check required fields
+      let keys = Object.keys(shippingInfo);
+      for (var i = 0; i < keys.length; i++){
+        let key = keys[i];
+        if (!(["suite", "state", "newsAndOffers"].indexOf(key) > -1)){
+          if(shippingInfo[key]===""){
+            return false;
+            }
+          }
+      }
+      //if states options check that one is set
+      return ((regions[shippingInfo.country]?.states == null)?
+        true : (shippingInfo.state !== ""));
+    }
+
     function sizeAndDetailsButtonClicked(){
-      if (size === "none"){
-        alert("No size selected!")
+      if (size === ""){
+        alert("No size selected.")
       }
       else{
         setPage("shipping")
@@ -60,9 +76,13 @@ export default function Checkout(){
     }
 
     function shippingButtonClicked(){
-      setPage("payment")
+      if (checkShippingInfo()){
+        setPage("payment");
+      }
+      else{
+        alert("Please enter all required fields.")
+      }
     }
-
 
 
     useEffect(() => {
@@ -105,7 +125,12 @@ export default function Checkout(){
         </div>
       )
     }else{
-      return (page);
+      return (
+        <div>
+        
+        </div>
+
+      );
     }
 
 }
