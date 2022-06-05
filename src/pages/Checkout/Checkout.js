@@ -26,7 +26,8 @@ import axios from 'axios';
 export default function Checkout(){
     const {id} = useParams();
 
-    const [regions, setRegions] = useState([])
+
+    const [regions, setRegions] = useState({})
 
     const [page, setPage] = useState("size");
 
@@ -97,6 +98,8 @@ export default function Checkout(){
                         shippingInfo={shippingInfo}
                         setShippingInfo={setShippingInfo}
                         size={size}
+                        regions={regions}
+                        setRegions={setRegions}
                         />
           <Button onClick={shippingButtonClicked} text={"Proceed to Payment"}/>
         </div>

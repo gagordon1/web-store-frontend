@@ -1,6 +1,5 @@
 import TextInput from '../../components/TextInput';
 import { FormContainer } from './CheckoutStyled'
-import { DropdownMenu } from '../../components/DropdownMenu'
 import CountryAndStateForm from './CountryAndStateForm';
 
 
@@ -42,6 +41,8 @@ export default function ShippingInfoForm(props){
         height={height}
         shippingInfo={props.shippingInfo}
         setShippingInfo={props.setShippingInfo}
+        regions={props.regions}
+        setRegions={props.setRegions}
         />
 
 

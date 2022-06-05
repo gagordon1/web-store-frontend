@@ -2,29 +2,29 @@
 import { CountryAndState } from './CheckoutStyled';
 import { DropdownMenu } from '../../components/DropdownMenu';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function CountryAndStateForm(props){
 
-  const [regions, setRegions] = useState({});
+
 
   useEffect(() => {
 
     axios.get('/regions')
     .then((resp) => {
-      setRegions(resp.data);
+      props.setRegions(resp.data);
     }).catch(error => {
     });
 
 
-  }, []);
+  }, [props]);
 
   return(
     <CountryAndState>
         <DropdownMenu
           height={props.height}
           width="195px"
-          options={Object.keys(regions)}
+          options={Object.keys(props.regions)}
           onChange={event => {
                 let newShippingInfo = {...props.shippingInfo};
                 newShippingInfo["country"] = event.target.value;
@@ -36,11 +36,11 @@ export default function CountryAndStateForm(props){
           <DropdownMenu
             disabled={
               props.shippingInfo.country=== "none" ||
-              regions[props.shippingInfo.country]?.states === null
+              props.regions[props.shippingInfo.country]?.states === null
             }
             height={props.height}
             width="195px"
-            options={regions[props.shippingInfo.country]?.states?.map(
+            options={props.regions[props.shippingInfo.country]?.states?.map(
               obj => obj.name
             )}
             onChange={event => {
