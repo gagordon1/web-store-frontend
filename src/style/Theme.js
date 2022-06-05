@@ -17,7 +17,7 @@ export const colors = {
   white : '#FFFFFF',
   backgroundColor : '#ECECEC',
   backgroundLineColor : '#BEBEBE',
-  placeholderText : '939393'
+  placeholderText : '#939393'
 }
 
 export const fontSizes = {

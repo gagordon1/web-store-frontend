@@ -11,6 +11,7 @@ const DropdownMenuContainer = styled.select`
   font-size : ${fontSizes.smallText};
   border : none;
   padding : none;
+  color : ${colors.darkGray};
   &:focus {
       outline: none;
   }
@@ -22,12 +23,13 @@ const DropdownMenuContainer = styled.select`
 
 export const DropdownMenu = (props) => {
   return <DropdownMenuContainer
+            disabled={props.disabled === undefined? false : props.disabled}
             onChange={props.onChange}
-            style={{width: props.width, height: props.height}}>
-              <option value="default" selected disabled hidden>{props.placeholder}</option>
+            style={{width: props.width, height: props.height }}>
+              <option key={-1} value="default" selected disabled hidden>{props.placeholder}</option>
               {
-                props.options?.map(size =>
-                  <option key={size} value={size}> {size}</option>
+                props.options?.map((opt, index) =>
+                  <option key={index} value={opt} > {opt}</option>
                 )
               }
           </DropdownMenuContainer>

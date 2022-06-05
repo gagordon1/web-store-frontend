@@ -26,7 +26,7 @@ import axios from 'axios';
 export default function Checkout(){
     const {id} = useParams();
 
-    const pages = ["size", "shipping", "payment"];
+    const [regions, setRegions] = useState([])
 
     const [page, setPage] = useState("size");
 
@@ -71,7 +71,6 @@ export default function Checkout(){
       .then((resp) => {
         setProduct(resp.data);
         setLoading(false);
-
       }).catch(error => {
         setLoading(false);
       });

@@ -1,5 +1,4 @@
-import { CheckoutContainer, CheckoutPageImage,
- DescriptionContainer, FormContainer} from './CheckoutStyled';
+import { CheckoutContainer, DescriptionContainer, FormContainer} from './CheckoutStyled';
 
  import { ProductImageAndTitle } from './ProductImageAndTitle';
 

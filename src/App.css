@@ -5,13 +5,6 @@ ul { padding:0 }
 .App {
   text-align: center;
 }
-select{
-  color : '#939393' !important;
-}
-input{
-  color : '#939393' !important;
-}
-
 body{
   background-color : #ECECEC;
   font-family : 'DM Mono';

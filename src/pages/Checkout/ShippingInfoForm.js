@@ -1,6 +1,8 @@
 import TextInput from '../../components/TextInput';
-import { FormContainer, CountryAndState } from './CheckoutStyled'
+import { FormContainer } from './CheckoutStyled'
 import { DropdownMenu } from '../../components/DropdownMenu'
+import CountryAndStateForm from './CountryAndStateForm';
+
 
 //maps ShippingInfo values to placeholder values
 const shippingInfoTextInputKeys = {
@@ -12,14 +14,11 @@ const shippingInfoTextInputKeys = {
   city : "City"
 }
 
-const shippingInfoDropdownInputKeys = {
-  country : "Country / Region",
-  state : "State"
-}
-
 export default function ShippingInfoForm(props){
   const width = "100%";
   const height = "50px";
+
+
   return (
     <FormContainer>
       <h3> Shipping Information </h3>
@@ -38,22 +37,13 @@ export default function ShippingInfoForm(props){
         />
         )
       }
-      <CountryAndState>
-        {Object.keys(shippingInfoDropdownInputKeys).map(key =>
-          <DropdownMenu
-            height={height}
-            width="195px"
-            options={["option1", "option2", "option3"]}
-            onChange={event => {
-                  let newShippingInfo = {...props.shippingInfo};
-                  newShippingInfo[key] = event.target.value;
-                  props.setShippingInfo(newShippingInfo)
-                }}
-            placeholder={shippingInfoDropdownInputKeys[key]}
-            />
-          )
-        }
-      </CountryAndState>
+      <CountryAndStateForm
+        height={height}
+        shippingInfo={props.shippingInfo}
+        setShippingInfo={props.setShippingInfo}
+        />
+
+
 
     </FormContainer>
   )
