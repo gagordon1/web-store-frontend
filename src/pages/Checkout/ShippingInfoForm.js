@@ -1,5 +1,5 @@
 import TextInput from '../../components/TextInput';
-import { FormContainer } from './CheckoutStyled'
+import { FormContainer, NewsCheckbox } from './CheckoutStyled'
 import CountryAndStateForm from './CountryAndStateForm';
 
 
@@ -44,6 +44,29 @@ export default function ShippingInfoForm(props){
         regions={props.regions}
         setRegions={props.setRegions}
         />
+        <TextInput
+            key={10}
+            placeholder={"Zip Code"}
+            width={width}
+            height={height}
+            onChange={event => {
+                  let newShippingInfo = {...props.shippingInfo};
+                  newShippingInfo["zipCode"] = event.target.value;
+                  props.setShippingInfo(newShippingInfo)
+                }
+            }
+        />
+        <NewsCheckbox>
+          <input type="checkbox" id="offers" onChange={
+            event => {
+                  let newShippingInfo = {...props.shippingInfo};
+                  newShippingInfo["newsAndOffers"] = event.target.checked;
+                  props.setShippingInfo(newShippingInfo)
+                  console.log(newShippingInfo.newsAndOffers)
+                }
+          } />
+          <label for="offers"> Email me with drop alerts {props.shippingInfo.newsAndOffers}</label>
+        </NewsCheckbox>
 
 
 

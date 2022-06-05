@@ -5,10 +5,15 @@ export const CheckoutContainer = styled.div`
   display : grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  align-items: center;
   @media (max-width: ${breakpoints.tablet}px){
     grid-template-columns: 1fr;
   }
 
+`
+
+export const NewsCheckbox = styled.div`
+  margin-bottom : 20px;
 `
 
 export const CheckoutPageImage = styled.img`
@@ -35,4 +40,5 @@ export const CountryAndState = styled.div`
   display : flex;
   justify-content : space-between;
   width : 100%;
+  margin-bottom : 10px;
 `
