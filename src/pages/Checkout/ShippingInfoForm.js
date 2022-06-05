@@ -23,8 +23,9 @@ export default function ShippingInfoForm(props){
     <FormContainer>
       <h3> Shipping Information </h3>
       {Object.keys(shippingInfoTextInputKeys).map(
-        key =>
+        (key, index) =>
         <TextInput
+            key={index}
             placeholder={shippingInfoTextInputKeys[key]}
             width={width}
             height={height}

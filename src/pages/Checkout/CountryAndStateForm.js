@@ -34,7 +34,10 @@ export default function CountryAndStateForm(props){
           placeholder={"Country / Region"}
           />
           <DropdownMenu
-            disabled={regions[props.shippingInfo.country]?.states === null}
+            disabled={
+              props.shippingInfo.country=== "none" ||
+              regions[props.shippingInfo.country]?.states === null
+            }
             height={props.height}
             width="195px"
             options={regions[props.shippingInfo.country]?.states?.map(

@@ -25,8 +25,9 @@ export const DropdownMenu = (props) => {
   return <DropdownMenuContainer
             disabled={props.disabled === undefined? false : props.disabled}
             onChange={props.onChange}
-            style={{width: props.width, height: props.height }}>
-              <option key={-1} value="default" selected disabled hidden>{props.placeholder}</option>
+            style={{width: props.width, height: props.height }}
+            defaultValue={"default"}>
+              <option key={-1} value="default" hidden>{props.placeholder}</option>
               {
                 props.options?.map((opt, index) =>
                   <option key={index} value={opt} > {opt}</option>
