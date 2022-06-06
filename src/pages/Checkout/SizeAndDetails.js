@@ -20,12 +20,12 @@ export default function SizeAndDetails(props){
                   width="200px"
                   options={props.product.variants.map(variant => variant.size)}
                   onChange={e => {
+
                     props.setVariant(props.product.variants.find(obj =>{
                           return obj.size === e.target.value;
                         }
-                      ).id
+                      )
                     );
-                    props.setSize(e.target.value);
                   }
                 }
                   placeholder="Select"

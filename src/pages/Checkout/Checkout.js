@@ -17,17 +17,18 @@ import axios from 'axios';
 // {
   // thumbnail : String
   // name : String
-  // availableSizes : [String]
   // description : String
   // garmentDetails : String
+  // variants : [
+  //    id : Number
+  //    size : String
+  //    name : String
+  // ]
+  //
 // }
 //
 //
 //
-
-
-
-
 export default function Checkout(){
     const {id} = useParams();
 
@@ -57,8 +58,12 @@ export default function Checkout(){
       zipCode : "",
       newsAndOffers : false
     })
-    const [size, setSize] = useState("");
-    const [variant, setVariant] = useState(-1);
+    const [variant, setVariant] = useState({
+      id: -1,
+      size: "",
+      name: "",
+      catalogVariantId: -1
+    });
 
     const [product, setProduct] = useState({
       thumbnail : "",
@@ -87,17 +92,18 @@ export default function Checkout(){
     }
 
     function sizeAndDetailsButtonClicked(){
-      if (variant === -1){
+      if (variant.id === -1 ){
         alert("No size selected.")
       }
       else{
+        console.log(variant);
         setPage("shipping")
       }
     }
 
     function shippingButtonClicked(){
       if (checkShippingInfo()){
-        calculateShippingPrice(setShippingPrice);
+        setShippingPrice(calculateShippingPrice(variant, shippingInfo, regions));
         setPage("payment");
       }
       else{
@@ -127,32 +133,38 @@ export default function Checkout(){
       return (
         //Size and Details
         <div>
-          <SizeAndDetails product={product} setSize={setSize} setVariant={setVariant}/>
+          <SizeAndDetails product={product} setVariant={setVariant} variant={variant}/>
           <Button onClick={sizeAndDetailsButtonClicked} text={"Proceed to Shipping"}/>
         </div>
       )
     }
     else if(page === "shipping"){
       return (
+        <div>
+          {variant.id + " " + variant.catalogVariantId}
           <ShippingInfo product={product}
                         shippingInfo={shippingInfo}
                         setShippingInfo={setShippingInfo}
-                        size={size}
                         regions={regions}
                         setRegions={setRegions}
                         shippingButtonClicked={shippingButtonClicked}
                         setPage={setPage}
                         />
+        </div>
       )
     }else{
       return (
         <CheckoutContainer>
-          <ProductImageAndTitle product={product} size={size}/>
+
+          <ProductImageAndTitle product={product} variant={variant}/>
           <PaymentModule
             shippingInfo={shippingInfo}
             setPage={setPage}
             regions={regions}
-            variant={variant}/>
+            variant={variant}
+            product={product}
+            shippingPrice={shippingPrice}
+            />
         </CheckoutContainer>
       );
     }

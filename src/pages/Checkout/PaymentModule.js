@@ -88,8 +88,11 @@ const PaymentModule = (props) =>{
       <p> {props.shippingInfo.country}  </p>
 
       <h3> Payment </h3>
+      <p> Price: ${props.product.retailPrice} </p>
+      <p> Shipping: ${props.shippingPrice} </p>
 
       <PaymentForm>
+
         <CardElement id="card-element"/>
         <ButtonNavigator>
           <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to shipping details"}/>
