@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import env from "react-dotenv";
+import { STRIPE_PUBLISHABLE_API_KEY} from '../../config/StoreInfo';
+import CheckoutForm from './CheckoutForm';
 
 
-const stripePromise = loadStripe(env.STRIPE_PUBLISHABLE_API_KEY);
-
+const stripePromise = loadStripe(STRIPE_PUBLISHABLE_API_KEY)
 export default function PaymentModule(props){
   const [clientSecret, setClientSecret] = useState("");
 
@@ -17,22 +17,21 @@ export default function PaymentModule(props){
       body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
+      .then((data) => {
+        setClientSecret(data.clientSecret)
+      }
+      );
+  }, [setClientSecret]);
 
-  const appearance = {
-    theme: 'stripe',
-  };
   const options = {
-    clientSecret,
-    appearance,
+    clientSecret: clientSecret
   };
 
   return (
-    <div>
+    <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <div/>
+          <CheckoutForm />
         </Elements>
       )}
     </div>

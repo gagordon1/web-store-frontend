@@ -32,7 +32,7 @@ export default function StorePage() {
   return (<ItemCardsContainer >
 
             {store?.map(item => <ItemCard
-                  key={item.id}
+                  key={item.id + " " + item.name}
                   id={item.id}
                   name={item.name}
                   thumbnail={item.thumbnail}

@@ -5,6 +5,8 @@ export const STORE_NAME = "My Store";
 
 export const STRIPE_PUBLISHABLE_API_KEY= "pk_test_51KQyC1LqSz5uCrfjrBlU5h0pUWPyaeQUF3FQIqrV7t1ZXTbSvQ7hfXYd4YJJipA3C6hR4noImSX1kEmv6BHCRQXg00AjCjsyOs";
 
+export const STRIPE_ACCOUNT_ID = "acct_1KQyC1LqSz5uCrfj";
+
 //maps id to description
 export const ITEM_DESCRIPTIONS  = {
   276143794 : FORD_FOCUS_WIKIPEDIA_DESCRIPTION,
