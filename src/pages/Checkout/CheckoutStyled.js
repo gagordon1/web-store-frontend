@@ -22,6 +22,12 @@ export const PaymentContainer = styled.div`
   width: 70%;
 
 `
+export const ButtonNavigator = styled.div`
+  display : flex;
+  position : relative;
+  width : 100%;
+  justify-content: space-between;
+`
 
 export const NewsCheckbox = styled.div`
   margin-bottom : 20px;

@@ -20,6 +20,8 @@ const ButtonContainer = styled.button`
 
 export default function Button(props){
   return (
-    <ButtonContainer onClick={props.onClick}> {props.text} </ButtonContainer>
+    <ButtonContainer
+      style={{width : props.width, height : props.height}}
+      onClick={props.onClick}> {props.text} </ButtonContainer>
   )
 }

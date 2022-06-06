@@ -12,7 +12,10 @@ export default function ShippingInfo(props){
         setShippingInfo = {props.setShippingInfo}
         regions={props.regions}
         setRegions={props.setRegions}
+        shippingButtonClicked={props.shippingButtonClicked}
+        setPage={props.setPage}
         />
+
     </CheckoutContainer>
   )
 

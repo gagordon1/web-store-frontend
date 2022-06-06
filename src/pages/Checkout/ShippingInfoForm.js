@@ -1,6 +1,8 @@
 import TextInput from '../../components/TextInput';
-import { FormContainer, NewsCheckbox } from './CheckoutStyled'
+import { FormContainer, NewsCheckbox, ButtonNavigator   } from './CheckoutStyled'
 import CountryAndStateForm from './CountryAndStateForm';
+import  Button  from '../../components/Button';
+
 
 
 //maps ShippingInfo values to placeholder values
@@ -67,6 +69,10 @@ export default function ShippingInfoForm(props){
           } />
           <label htmlFor="offers"> Email me with drop alerts {props.shippingInfo.newsAndOffers}</label>
         </NewsCheckbox>
+        <ButtonNavigator>
+          <Button width={"48%"} onClick={() => props.setPage("size")} text={"Return to Size Selection"}/>
+          <Button width={"48%"} onClick={props.shippingButtonClicked} text={"Proceed to Payment"}/>
+        </ButtonNavigator>
 
 
 

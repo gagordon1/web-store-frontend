@@ -1,14 +1,32 @@
 import Button from '../../components/Button';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { PaymentForm, PaymentContainer } from './CheckoutStyled';
+import { PaymentForm, PaymentContainer, ButtonNavigator } from './CheckoutStyled';
+import { Loader } from '../../components/Loader';
+import { useState } from 'react';
 
 
-const PaymentModule = () =>{
+
+const PaymentModule = (props) =>{
 
   const elements = useElements();
   const stripe = useStripe();
+  const loading = useState(false);
+
+  const textLocation = (city, state, zipCode) =>{
+
+    return (state == "")? city + ", " + zipCode
+    : city + ", " + state +  ", " + zipCode
+
+  }
+
+  const textAddress = (address, suite ) =>{
+    return (suite=="")? address : address + " " + suite
+  }
 
   const handleSubmit = async(e) => {
+
+
+    //CREATE STRIPE PAYMENT INTENT AND CONFIRM PAYMENT
     e.preventDefault()
     if (!stripe || !elements){
       return;
@@ -45,16 +63,28 @@ const PaymentModule = () =>{
 
     console.log(`Payment Intent ${paymentIntent.id}: ${paymentIntent.status}`)
 
+    //
+
 
 
   }
 
   return (
     <PaymentContainer>
+      <h3> Order Summary </h3>
+      <p> Ship To: </p>
+      <p> {props.shippingInfo.firstName + " " + props.shippingInfo.lastName}  </p>
+      <p> {props.shippingInfo.email}  </p>
+      <p> {textAddress(props.shippingInfo.address, props.shippingInfo.suite)}  </p>
+      <p> {textLocation(props.shippingInfo.city, props.shippingInfo.state, props.shippingInfo.zipCode)}  </p>
+
       <h3> Payment </h3>
       <PaymentForm>
         <CardElement id="card-element"/>
-        <Button text={"Pay"} onClick={handleSubmit}/>
+        <ButtonNavigator>
+          <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to shipping details"}/>
+          <Button width={"48%"} onClick={handleSubmit} text={"Pay"}/>
+        </ButtonNavigator>
       </PaymentForm>
     </PaymentContainer>
   )

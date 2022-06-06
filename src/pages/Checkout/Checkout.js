@@ -55,6 +55,7 @@ export default function Checkout(){
 
     function checkShippingInfo(){
       //check required fields
+      console.log(regions);
       let keys = Object.keys(shippingInfo);
       for (var i = 0; i < keys.length; i++){
         let key = keys[i];
@@ -116,22 +117,21 @@ export default function Checkout(){
     }
     else if(page === "shipping"){
       return (
-        <div>
           <ShippingInfo product={product}
                         shippingInfo={shippingInfo}
                         setShippingInfo={setShippingInfo}
                         size={size}
                         regions={regions}
                         setRegions={setRegions}
+                        shippingButtonClicked={shippingButtonClicked}
+                        setPage={setPage}
                         />
-          <Button onClick={shippingButtonClicked} text={"Proceed to Payment"}/>
-        </div>
       )
     }else{
       return (
         <CheckoutContainer>
           <ProductImageAndTitle product={product} size={size}/>
-          <PaymentModule/>
+          <PaymentModule shippingInfo={shippingInfo} setPage={setPage} regions={regions}/>
         </CheckoutContainer>
       );
     }

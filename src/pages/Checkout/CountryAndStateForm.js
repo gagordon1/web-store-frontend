@@ -40,7 +40,7 @@ export default function CountryAndStateForm(props){
             height={props.height}
             width="195px"
             options={props.regions[props.shippingInfo.country]?.states?.map(
-              obj => obj.name
+              obj => obj.code
             )}
             onChange={event => {
                   let newShippingInfo = {...props.shippingInfo};
