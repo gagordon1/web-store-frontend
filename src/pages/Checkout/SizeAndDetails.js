@@ -18,8 +18,16 @@ export default function SizeAndDetails(props){
             <DropdownMenu
                   height="70px"
                   width="200px"
-                  options={props.product.availableSizes}
-                  onChange={e => props.setSize(e.target.value)}
+                  options={props.product.variants.map(variant => variant.size)}
+                  onChange={e => {
+                    props.setVariant(props.product.variants.find(obj =>{
+                          return obj.size === e.target.value;
+                        }
+                      ).id
+                    );
+                    props.setSize(e.target.value);
+                  }
+                }
                   placeholder="Select"
                   />
           </FormContainer>

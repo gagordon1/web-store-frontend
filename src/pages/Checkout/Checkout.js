@@ -8,6 +8,7 @@ import ShippingInfo from './ShippingInfo';
 import PaymentModule from './PaymentModule';
 import { ProductImageAndTitle } from './ProductImageAndTitle';
 import { CheckoutContainer } from './CheckoutStyled'
+import { calculateShippingPrice } from './PricingCalculations';
 
 import axios from 'axios';
 
@@ -26,6 +27,7 @@ import axios from 'axios';
 
 
 
+
 export default function Checkout(){
     const {id} = useParams();
 
@@ -33,6 +35,15 @@ export default function Checkout(){
     const [regions, setRegions] = useState({})
 
     const [page, setPage] = useState("size");
+
+    const [shippingPrice, setShippingPrice] = useState(0.0);
+
+    const [taxRates, setTaxRates] = useState(
+      {
+        tax : 0.0,
+        shippingTax : 0.0
+      }
+    );
 
     const [shippingInfo, setShippingInfo] = useState({
       firstName : "",
@@ -46,16 +57,21 @@ export default function Checkout(){
       zipCode : "",
       newsAndOffers : false
     })
-
     const [size, setSize] = useState("");
+    const [variant, setVariant] = useState(-1);
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState({
+      thumbnail : "",
+      id : -1,
+      name : "",
+      retailPrice : 0,
+      variants : []
+    });
 
     const [loading, setLoading] = useState(false);
 
     function checkShippingInfo(){
       //check required fields
-      console.log(regions);
       let keys = Object.keys(shippingInfo);
       for (var i = 0; i < keys.length; i++){
         let key = keys[i];
@@ -71,7 +87,7 @@ export default function Checkout(){
     }
 
     function sizeAndDetailsButtonClicked(){
-      if (size === ""){
+      if (variant === -1){
         alert("No size selected.")
       }
       else{
@@ -81,6 +97,7 @@ export default function Checkout(){
 
     function shippingButtonClicked(){
       if (checkShippingInfo()){
+        calculateShippingPrice(setShippingPrice);
         setPage("payment");
       }
       else{
@@ -110,7 +127,7 @@ export default function Checkout(){
       return (
         //Size and Details
         <div>
-          <SizeAndDetails product={product} setSize={setSize}/>
+          <SizeAndDetails product={product} setSize={setSize} setVariant={setVariant}/>
           <Button onClick={sizeAndDetailsButtonClicked} text={"Proceed to Shipping"}/>
         </div>
       )
@@ -131,7 +148,11 @@ export default function Checkout(){
       return (
         <CheckoutContainer>
           <ProductImageAndTitle product={product} size={size}/>
-          <PaymentModule shippingInfo={shippingInfo} setPage={setPage} regions={regions}/>
+          <PaymentModule
+            shippingInfo={shippingInfo}
+            setPage={setPage}
+            regions={regions}
+            variant={variant}/>
         </CheckoutContainer>
       );
     }
