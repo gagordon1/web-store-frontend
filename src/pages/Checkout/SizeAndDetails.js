@@ -4,7 +4,7 @@ import { CheckoutContainer, DescriptionContainer, FormContainer} from './Checkou
 
 import { DropdownMenu } from '../../components/DropdownMenu';
 
-import { itemDescriptions } from '../../config/StoreInfo';
+import { ITEM_DESCRIPTIONS } from '../../config/StoreInfo';
 
 export default function SizeAndDetails(props){
 
@@ -26,8 +26,8 @@ export default function SizeAndDetails(props){
           <DescriptionContainer>
             <h3> Description </h3>
             <p> {
-              (props.product.id in itemDescriptions)?
-                itemDescriptions[props.product.id]
+              (props.product.id in ITEM_DESCRIPTIONS)?
+                ITEM_DESCRIPTIONS[props.product.id]
                 :
                 "No Description"
             }</p>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { SectionSeparator } from './SectionSeparator'
-import { storeName } from '../config/StoreInfo.js'
+import { STORE_NAME } from '../config/StoreInfo.js'
 
 
 const BottomSectionContainer = styled.div`
@@ -22,7 +22,7 @@ export const BottomSection = () =>{
     <BottomSectionContainer>
       <SectionSeparator/>
       <Footer>
-        <h6>Copyright ©{new Date().getFullYear()} {storeName} </h6>
+        <h6>Copyright ©{new Date().getFullYear()} {STORE_NAME} </h6>
       </Footer>
     </BottomSectionContainer>
   )

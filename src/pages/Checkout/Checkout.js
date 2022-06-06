@@ -5,6 +5,7 @@ import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 import SizeAndDetails from './SizeAndDetails';
 import ShippingInfo from './ShippingInfo';
+import PaymentModule from './PaymentModule';
 
 import axios from 'axios';
 
@@ -86,7 +87,7 @@ export default function Checkout(){
 
 
     useEffect(() => {
-
+      console.log("getting product details")
       setLoading(true);
       axios.get('/product-details/' + id)
       .then((resp) => {
@@ -126,9 +127,7 @@ export default function Checkout(){
       )
     }else{
       return (
-        <div>
-        
-        </div>
+        <PaymentModule/>
 
       );
     }

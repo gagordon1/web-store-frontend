@@ -6,18 +6,17 @@ import { useEffect } from 'react';
 
 export default function CountryAndStateForm(props){
 
-
+  const setRegions = props.setRegions
 
   useEffect(() => {
-
     axios.get('/regions')
     .then((resp) => {
-      props.setRegions(resp.data);
+      setRegions(resp.data);
     }).catch(error => {
     });
 
 
-  }, [props]);
+  }, [setRegions]);
 
   return(
     <CountryAndState>

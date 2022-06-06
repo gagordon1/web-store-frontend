@@ -1,4 +1,4 @@
-import { storeName } from '../config/StoreInfo';
+import { STORE_NAME } from '../config/StoreInfo';
 import React from 'react';
 import { DesktopMenu } from './DesktopMenu';
 import { NavbarContainer, StoreTitle, MenuContainer } from './NavbarStyled';
@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
     return (
       <NavbarContainer>
-        <StoreTitle> {storeName} </StoreTitle>
+        <StoreTitle> {STORE_NAME} </StoreTitle>
         <MenuContainer>
             <DesktopMenu/>
         </MenuContainer>
