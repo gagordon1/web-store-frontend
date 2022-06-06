@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap');
 
-ul { padding:0 }
+.StripeElement {
+  background-color : white;
+  padding: 16.8px 16.8px;
+  border-radius: 7px;
+  width: 100%;
+  margin-bottom : 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.StripeElement--hover{
+  filter: drop-shadow(1px 1px 1px ${colors.darkGray});
+  cursor: pointer;
+}
+
 
 .App {
   text-align: center;

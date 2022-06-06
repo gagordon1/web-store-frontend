@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import SizeAndDetails from './SizeAndDetails';
 import ShippingInfo from './ShippingInfo';
 import PaymentModule from './PaymentModule';
+import { ProductImageAndTitle } from './ProductImageAndTitle';
+import { CheckoutContainer } from './CheckoutStyled'
 
 import axios from 'axios';
 
@@ -127,7 +129,10 @@ export default function Checkout(){
       )
     }else{
       return (
-        <PaymentModule/>
+        <CheckoutContainer>
+          <ProductImageAndTitle product={product} size={size}/>
+          <PaymentModule/>
+        </CheckoutContainer>
       );
     }
 

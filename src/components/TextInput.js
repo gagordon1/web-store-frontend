@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, fontSizes } from '../style/Theme';
 
-const InputContainer = styled.input`
+export const InputContainer = styled.input`
   border : none;
   background: ${colors.white};
   border-radius: 7px;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints } from '../../style/Theme';
+import { breakpoints, colors} from '../../style/Theme';
 
 export const CheckoutContainer = styled.div`
   display : grid;
@@ -9,6 +9,17 @@ export const CheckoutContainer = styled.div`
   @media (max-width: ${breakpoints.tablet}px){
     grid-template-columns: 1fr;
   }
+
+`
+export const PaymentForm = styled.form`
+  width: 100%;
+  text-align: center;
+`
+
+export const PaymentContainer = styled.div`
+  position: relative;
+  text-align: left;
+  width: 70%;
 
 `
 
@@ -32,7 +43,7 @@ export const FormContainer = styled.div`
 `
 
 export const DescriptionContainer = styled.div`
-  width : 350px;
+  width : 400px;
   text-align : left;
 `
 
