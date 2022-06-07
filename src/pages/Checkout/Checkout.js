@@ -8,7 +8,7 @@ import ShippingInfo from './ShippingInfo';
 import PaymentModule from './PaymentModule';
 import { ProductImageAndTitle } from './ProductImageAndTitle';
 import { CheckoutContainer } from './CheckoutStyled'
-import { calculateShippingPrice } from './PricingCalculations';
+import { calculateShippingPrice, calculateTaxRate, calculateTotalPrice } from './PricingCalculations';
 
 import axios from 'axios';
 
@@ -37,14 +37,11 @@ export default function Checkout(){
 
     const [page, setPage] = useState("size");
 
-    const [shippingPrice, setShippingPrice] = useState(0.0);
-
-    const [taxRates, setTaxRates] = useState(
-      {
-        tax : 0.0,
-        shippingTax : 0.0
-      }
-    );
+    const [shippingData, setShippingData] = useState({
+      rate : 0.0,
+      minShipDays : -1,
+      maxShipDays : -1
+    })
 
     const [shippingInfo, setShippingInfo] = useState({
       firstName : "",
@@ -101,9 +98,13 @@ export default function Checkout(){
       }
     }
 
-    function shippingButtonClicked(){
+    const shippingButtonClicked = async () => {
       if (checkShippingInfo()){
-        setShippingPrice(calculateShippingPrice(variant, shippingInfo, regions));
+        const ship = await calculateShippingPrice(variant, shippingInfo, regions);
+        setShippingData(ship);
+        const taxRate = await calculateTaxRate(shippingInfo, shippingData, regions);
+        setTaxRate(taxRate);
+        setTotalPrice(calculateTotalPrice(product.retailPrice,  shippingData.rate, taxRate))
         setPage("payment");
       }
       else{
@@ -140,17 +141,14 @@ export default function Checkout(){
     }
     else if(page === "shipping"){
       return (
-        <div>
-          {variant.id + " " + variant.catalogVariantId}
-          <ShippingInfo product={product}
-                        shippingInfo={shippingInfo}
-                        setShippingInfo={setShippingInfo}
-                        regions={regions}
-                        setRegions={setRegions}
-                        shippingButtonClicked={shippingButtonClicked}
-                        setPage={setPage}
-                        />
-        </div>
+        <ShippingInfo product={product}
+                      shippingInfo={shippingInfo}
+                      setShippingInfo={setShippingInfo}
+                      regions={regions}
+                      setRegions={setRegions}
+                      shippingButtonClicked={shippingButtonClicked}
+                      setPage={setPage}
+                      />
       )
     }else{
       return (
@@ -159,11 +157,11 @@ export default function Checkout(){
           <ProductImageAndTitle product={product} variant={variant}/>
           <PaymentModule
             shippingInfo={shippingInfo}
+            shippingData={shippingData}
             setPage={setPage}
             regions={regions}
             variant={variant}
             product={product}
-            shippingPrice={shippingPrice}
             />
         </CheckoutContainer>
       );

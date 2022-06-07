@@ -1,6 +1,6 @@
-import { SHIPPING_RATE_ENDPOINT } from '../../config/endpoints';
+import { SHIPPING_RATE_ENDPOINT, TAX_RATE_ENDPOINT } from '../../config/endpoints';
 
-export const calculateShippingPrice = (variant, shippingInfo, regions) => {
+export const calculateShippingPrice = async (variant, shippingInfo, regions) => {
 
   const data = {
             address : shippingInfo.address,
@@ -13,21 +13,61 @@ export const calculateShippingPrice = (variant, shippingInfo, regions) => {
     data["state_code"] = shippingInfo.state;
   }
 
+  try{
+    const shippingData= await fetch(SHIPPING_RATE_ENDPOINT,{
+        method: 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(r => r.json())
+        .then(body => body.result
+        );
+    const standardShipping = shippingData.find(obj => {return obj.id ===  "STANDARD"});
+    return (
+      {
+        rate : Number(standardShipping.rate),
+        minShipDays : standardShipping.minDeliveryDays,
+        maxShipDays : standardShipping.maxDeliveryDays
+      }
+    );
 
-  fetch(SHIPPING_RATE_ENDPOINT,{
-      method: 'POST',
-      headers : {
-        'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(response =>{
-      console.log(response.data);
-      return 10.99;
-    }).catch(error => {
-      console.log(error);
-      return 10.99;
-    })
+  }
+  catch(error){
+    console.log(error.message);
+  }
+}
+
+export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
+
+  const data = {
+    country_code : regions[shippingInfo.country].code,
+    state_code : shippingInfo.state,
+    city : shippingInfo.city,
+    zip : shippingInfo.zipCode
+  }
+  try{
+    const taxData= await fetch(TAX_RATE_ENDPOINT,{
+        method: 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(r => r.json())
+        .then(body => body.result);
+    console.log(taxData)
+
+    return taxData.rate;
+
+  }
+  catch(error){
+    console.log(error.message);
+  }
 
 
+}
 
+
+export const calculateTotalPrice = (retailPrice, shippingCost, taxRate) => {
+  return (retailPrice + shippingCost)* taxRate + (retailPrice + shippingCost);
 }
