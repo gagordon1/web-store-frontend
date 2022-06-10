@@ -55,9 +55,8 @@ export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
         body: JSON.stringify(data)
       }).then(r => r.json())
         .then(body => body.result);
-    console.log(taxData)
 
-    return taxData.rate;
+    return Number(taxData.rate);
 
   }
   catch(error){
@@ -65,9 +64,4 @@ export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
   }
 
 
-}
-
-
-export const calculateTotalPrice = (retailPrice, shippingCost, taxRate) => {
-  return (retailPrice + shippingCost)* taxRate + (retailPrice + shippingCost);
 }

@@ -81,8 +81,8 @@ const PaymentModule = (props) =>{
       <h3> Payment </h3>
       <p> Price: ${props.product.retailPrice} </p>
       <p> Shipping: ${props.shippingData.rate} </p>
-      <p> Sales Tax: ${(props.product.retailPrice + props.shippingData.rate) *props.taxRate} </p>
-      <p> Total: ${props.totalPrice} </p>
+      <p> Sales Tax: ${props.salesTax.toFixed(2)} </p>
+      <p> Total: ${props.totalPrice.toFixed(2)} </p>
       <p> Est. Delivery Time: {props.shippingData.minShipDays} - {props.shippingData.maxShipDays} days </p>
       <br></br>
 

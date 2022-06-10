@@ -8,7 +8,7 @@ import ShippingInfo from './ShippingInfo';
 import PaymentModule from './PaymentModule';
 import { ProductImageAndTitle } from './ProductImageAndTitle';
 import { CheckoutContainer } from './CheckoutStyled'
-import { calculateShippingPrice, calculateTaxRate, calculateTotalPrice } from './PricingCalculations';
+import { calculateShippingPrice, calculateTaxRate } from './PricingCalculations';
 
 import axios from 'axios';
 
@@ -31,9 +31,9 @@ import axios from 'axios';
 //
 export default function Checkout(){
     const {id} = useParams();
-
-
-    const [regions, setRegions] = useState({})
+    const [totalPrice, setTotalPrice] = useState(0.0);
+    const [salesTax, setSalesTax] = useState(0.0);
+    const [regions, setRegions] = useState({});
 
     const [page, setPage] = useState("size");
 
@@ -99,16 +99,21 @@ export default function Checkout(){
     }
 
     const shippingButtonClicked = async () => {
+
       if (checkShippingInfo()){
+        setLoading(true);
         const ship = await calculateShippingPrice(variant, shippingInfo, regions);
+        const rate = await calculateTaxRate(shippingInfo, shippingData, regions);
+        const tax = (Number(product.retailPrice) + Number(ship.rate)) * rate;
+        setTotalPrice(Number(product.retailPrice) + Number(ship.rate) + tax);
         setShippingData(ship);
-        const taxRate = await calculateTaxRate(shippingInfo, shippingData, regions);
-        setTaxRate(taxRate);
-        setTotalPrice(calculateTotalPrice(product.retailPrice,  shippingData.rate, taxRate))
+        setSalesTax(tax);
         setPage("payment");
+        setLoading(false);
       }
       else{
         alert("Please enter all required fields.")
+        setLoading(false);
       }
     }
 
@@ -162,6 +167,8 @@ export default function Checkout(){
             regions={regions}
             variant={variant}
             product={product}
+            salesTax={salesTax}
+            totalPrice={totalPrice}
             />
         </CheckoutContainer>
       );
