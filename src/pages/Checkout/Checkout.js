@@ -108,8 +108,21 @@ export default function Checkout(){
         setTotalPrice(Number(product.retailPrice) + Number(ship.rate) + tax);
         setShippingData(ship);
         setSalesTax(tax);
-        setPage("payment");
-        setLoading(false);
+        if ((typeof rate === "number") &&
+            (typeof tax === "number") &&
+            (typeof ship.rate === "number") &&
+            (typeof ship.minShipDays === "number") &&
+            (typeof ship.maxShipDays === "number")
+        ){
+          setPage("payment");
+          setLoading(false);
+        }
+        else{
+          alert("There was an error processing your shipping information. Please make sure your shipping details are correct.")
+          setLoading(false);
+        }
+
+
       }
       else{
         alert("Please enter all required fields.")

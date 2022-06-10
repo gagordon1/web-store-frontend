@@ -34,7 +34,7 @@ export const calculateShippingPrice = async (variant, shippingInfo, regions) => 
 
   }
   catch(error){
-    console.log(error.message);
+    console.log(error);
   }
 }
 
@@ -55,12 +55,11 @@ export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
         body: JSON.stringify(data)
       }).then(r => r.json())
         .then(body => body.result);
-
     return Number(taxData.rate);
 
   }
   catch(error){
-    console.log(error.message);
+    console.log(error);
   }
 
 

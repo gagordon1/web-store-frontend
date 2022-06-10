@@ -77,6 +77,7 @@ const PaymentModule = (props) =>{
       <p> {textAddress(props.shippingInfo.address, props.shippingInfo.suite)}  </p>
       <p> {textLocation(props.shippingInfo.city, props.shippingInfo.state, props.shippingInfo.zipCode)}  </p>
       <p> {props.shippingInfo.country}  </p>
+
       <br></br>
       <h3> Payment </h3>
       <p> Price: ${props.product.retailPrice} </p>
@@ -84,6 +85,7 @@ const PaymentModule = (props) =>{
       <p> Sales Tax: ${props.salesTax.toFixed(2)} </p>
       <p> Total: ${props.totalPrice.toFixed(2)} </p>
       <p> Est. Delivery Time: {props.shippingData.minShipDays} - {props.shippingData.maxShipDays} days </p>
+
       <br></br>
 
       <PaymentForm>
@@ -94,6 +96,7 @@ const PaymentModule = (props) =>{
           <Button width={"48%"} onClick={handleSubmit} text={"Pay"}/>
         </ButtonNavigator>
       </PaymentForm>
+      <i> Please ensure that your address is correct. We cannot issue refunds.</i>
     </PaymentContainer>
   )
 }

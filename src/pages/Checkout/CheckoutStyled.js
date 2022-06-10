@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints, colors} from '../../style/Theme';
+import { breakpoints } from '../../style/Theme';
 
 export const CheckoutContainer = styled.div`
   display : grid;
@@ -14,6 +14,7 @@ export const CheckoutContainer = styled.div`
 export const PaymentForm = styled.form`
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
 `
 
 export const PaymentContainer = styled.div`
