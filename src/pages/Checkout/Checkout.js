@@ -51,7 +51,7 @@ export default function Checkout(){
       suite : "",
       city : "",
       country : "",
-      state : "",
+      state : "", //code
       zipCode : "",
       newsAndOffers : false
     })
@@ -168,7 +168,7 @@ export default function Checkout(){
                       setPage={setPage}
                       />
       )
-    }else{
+    }else if (page==="payment"){
       return (
         <CheckoutContainer>
 
@@ -185,6 +185,10 @@ export default function Checkout(){
             />
         </CheckoutContainer>
       );
+    }else if (page==="checkout-complete"){
+      return(
+        <div> Checkout Complete. </div>
+      )
     }
 
 }

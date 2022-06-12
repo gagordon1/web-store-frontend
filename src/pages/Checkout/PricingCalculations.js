@@ -14,16 +14,14 @@ export const calculateShippingPrice = async (variant, shippingInfo, regions) => 
   }
 
   try{
-    const shippingData= await fetch(SHIPPING_RATE_ENDPOINT,{
+    const standardShipping = await fetch(SHIPPING_RATE_ENDPOINT,{
         method: 'POST',
         headers : {
           'Content-Type' : 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(r => r.json())
-        .then(body => body.result
-        );
-    const standardShipping = shippingData.find(obj => {return obj.id ===  "STANDARD"});
+      }).then(r => r.json());
+    console.log(standardShipping.rate);
     return (
       {
         rate : Number(standardShipping.rate),
@@ -53,8 +51,7 @@ export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
           'Content-Type' : 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(r => r.json())
-        .then(body => body.result);
+      }).then(r => r.json());
     return Number(taxData.rate);
 
   }
