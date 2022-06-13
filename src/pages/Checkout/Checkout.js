@@ -114,8 +114,9 @@ export default function Checkout(){
             (typeof ship.minShipDays === "number") &&
             (typeof ship.maxShipDays === "number")
         ){
-          setPage("payment");
           setLoading(false);
+          setPage("payment");
+
         }
         else{
           alert("There was an error processing your shipping information. Please make sure your shipping details are correct.")
@@ -145,7 +146,30 @@ export default function Checkout(){
 
     }, [setProduct, id, setLoading]);
 
-    if (loading){
+    if (page==="payment"){
+      return (
+        <div >
+          {loading? <Loader/> : null}
+          <CheckoutContainer style={{display : loading? "none" : null}}>
+
+            <ProductImageAndTitle product={product} variant={variant}/>
+            <PaymentModule
+              shippingInfo={shippingInfo}
+              shippingData={shippingData}
+              setPage={setPage}
+              regions={regions}
+              variant={variant}
+              product={product}
+              salesTax={salesTax}
+              totalPrice={totalPrice}
+              setLoading={setLoading}
+              />
+          </CheckoutContainer>
+        </div>
+      );
+    }
+
+    else if (loading){
       return <Loader/>
     }
     else if (page === "size"){
@@ -168,27 +192,13 @@ export default function Checkout(){
                       setPage={setPage}
                       />
       )
-    }else if (page==="payment"){
-      return (
-        <CheckoutContainer>
-
-          <ProductImageAndTitle product={product} variant={variant}/>
-          <PaymentModule
-            shippingInfo={shippingInfo}
-            shippingData={shippingData}
-            setPage={setPage}
-            regions={regions}
-            variant={variant}
-            product={product}
-            salesTax={salesTax}
-            totalPrice={totalPrice}
-            />
-        </CheckoutContainer>
-      );
     }else if (page==="checkout-complete"){
       return(
         <div> Checkout Complete. </div>
       )
+    }
+    else {
+      return "Empty"
     }
 
 }

@@ -4,7 +4,7 @@ import { breakpoints } from '../../style/Theme';
 export const CheckoutContainer = styled.div`
   display : grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   @media (max-width: ${breakpoints.tablet}px){
     grid-template-columns: 1fr;
@@ -18,6 +18,7 @@ export const PaymentForm = styled.form`
 `
 
 export const PaymentContainer = styled.div`
+  margin: auto;
   position: relative;
   text-align: left;
   width: 70%;

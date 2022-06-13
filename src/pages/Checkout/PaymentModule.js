@@ -1,8 +1,6 @@
 import Button from '../../components/Button';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { PaymentForm, PaymentContainer, ButtonNavigator } from './CheckoutStyled';
-import { useState } from 'react';
-import Loader from '../../components/Loader';
 
 
 
@@ -10,9 +8,6 @@ const PaymentModule = (props) =>{
 
   const elements = useElements();
   const stripe = useStripe();
-  const [loading, setLoading] = useState(false);
-
-  const loadingPlaceholder = loading? <Loader/> : <div></div>
 
   const textLocation = (city, state, zipCode) =>{
 
@@ -26,13 +21,13 @@ const PaymentModule = (props) =>{
   }
 
   const handleSubmit = async(e) => {
-
+    props.setLoading(true)
     const card = elements.getElement(CardElement);
-    setLoading(true)
+
     //CREATE STRIPE PAYMENT INTENT AND CONFIRM PAYMENT
     e.preventDefault()
     if (!stripe || !elements){
-      setLoading(false);
+      props.setLoading(false);
       return;
     }
     let paymentIntentResult = {}
@@ -63,7 +58,8 @@ const PaymentModule = (props) =>{
         );
     }catch(error){
       console.log(error.message);
-      setLoading(false);
+      alert("Error submitting shipping info.")
+      props.setLoading(false);
       return
     }
     console.log("Payment intent created");
@@ -77,7 +73,7 @@ const PaymentModule = (props) =>{
     )
     if (stripeError){
       alert(stripeError.message);
-      setLoading(false);
+      props.setLoading(false);
       return;
     }
 
@@ -87,7 +83,8 @@ const PaymentModule = (props) =>{
       console.log("submitting order to printful");
     }
     else{
-      setLoading(false);
+      alert("Error finalizing this order.")
+      props.setLoading(false);
       return
     }
 
@@ -104,50 +101,48 @@ const PaymentModule = (props) =>{
           })
         })
     }catch (finalizeOrderError){
-      console.log(finalizeOrderError.message)
-      setLoading(false);
+      alert("Error finalizing this order.")
+      console.log(finalizeOrderError)
+      props.setLoading(false);
       return
     }
     console.log("Order updated as payed - now to be confirmed by store owner.");
-    setLoading(false);
+    props.setLoading(false);
     props.setPage("checkout-complete")
 
   }
 
   return (
-    <div>
 
-      <PaymentContainer>
-        <h3> Order Summary </h3>
-        <p> Ship To: </p>
-        <p> {props.shippingInfo.firstName + " " + props.shippingInfo.lastName}  </p>
-        <p> {props.shippingInfo.email}  </p>
-        <p> {textAddress(props.shippingInfo.address, props.shippingInfo.suite)}  </p>
-        <p> {textLocation(props.shippingInfo.city, props.shippingInfo.state, props.shippingInfo.zipCode)}  </p>
-        <p> {props.shippingInfo.country}  </p>
+    <PaymentContainer>
+      <h3> Order Summary </h3>
+      <p> Ship To: </p>
+      <p> {props.shippingInfo.firstName + " " + props.shippingInfo.lastName}  </p>
+      <p> {props.shippingInfo.email}  </p>
+      <p> {textAddress(props.shippingInfo.address, props.shippingInfo.suite)}  </p>
+      <p> {textLocation(props.shippingInfo.city, props.shippingInfo.state, props.shippingInfo.zipCode)}  </p>
+      <p> {props.shippingInfo.country}  </p>
 
-        <br></br>
-        <h3> Payment </h3>
-        <p> Price: ${props.product.retailPrice} </p>
-        <p> Shipping: ${props.shippingData.rate} </p>
-        <p> Sales Tax: ${props.salesTax.toFixed(2)} </p>
-        <p> Total: ${props.totalPrice.toFixed(2)} </p>
-        <p> Est. Delivery Time: {props.shippingData.minShipDays} - {props.shippingData.maxShipDays} days </p>
+      <br></br>
+      <h3> Payment </h3>
+      <p> Price: ${props.product.retailPrice} </p>
+      <p> Shipping: ${props.shippingData.rate} </p>
+      <p> Sales Tax: ${props.salesTax.toFixed(2)} </p>
+      <p> Total: ${props.totalPrice.toFixed(2)} </p>
+      <p> Est. Delivery Time: {props.shippingData.minShipDays} - {props.shippingData.maxShipDays} days </p>
 
-        <br></br>
+      <br></br>
 
-        <PaymentForm>
+      <PaymentForm>
 
-          <CardElement id="card-element"/>
-          <ButtonNavigator>
-            <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to shipping details"}/>
-            <Button width={"48%"} onClick={handleSubmit} text={"Pay"}/>
-          </ButtonNavigator>
-        </PaymentForm>
-        <i> Please ensure that your address is correct. We cannot issue refunds.</i>
-      </PaymentContainer>
-      {loadingPlaceholder}
-    </div>
+        <CardElement id="card-element"/>
+        <ButtonNavigator>
+          <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to shipping details"}/>
+          <Button width={"48%"} onClick={handleSubmit} text={"Pay"}/>
+        </ButtonNavigator>
+      </PaymentForm>
+      <i> Please ensure that your address is correct. We cannot issue refunds.</i>
+    </PaymentContainer>
   )
 
 
