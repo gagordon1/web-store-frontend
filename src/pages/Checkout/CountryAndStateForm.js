@@ -3,13 +3,14 @@ import { CountryAndState } from './CheckoutStyled';
 import { DropdownMenu } from '../../components/DropdownMenu';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { BACKEND_API_URL, REGIONS_ENDPOINT } from '../../config/endpoints'
 
 export default function CountryAndStateForm(props){
 
   const setRegions = props.setRegions
 
   useEffect(() => {
-    axios.get('/regions')
+    axios.get(BACKEND_API_URL + REGIONS_ENDPOINT)
     .then((resp) => {
       setRegions(resp.data);
     }).catch(error => {

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ItemCard from '../../components/ItemCard'
-import Loader from '../../components/Loader'
-import { ItemCardsContainer } from './StorePageStyled'
+import ItemCard from '../../components/ItemCard';
+import Loader from '../../components/Loader';
+import { ItemCardsContainer } from './StorePageStyled';
+import { BACKEND_API_URL, PRODUCTS_ENDPOINT} from '../../config/endpoints';
 
 export default function StorePage() {
 
@@ -12,7 +13,7 @@ export default function StorePage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('/products')
+    axios.get(BACKEND_API_URL + PRODUCTS_ENDPOINT)
     .then((resp) => {
       setStore(resp.data);
       setLoading(false);

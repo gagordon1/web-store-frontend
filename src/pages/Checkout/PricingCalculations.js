@@ -1,4 +1,4 @@
-import { SHIPPING_RATE_ENDPOINT, TAX_RATE_ENDPOINT } from '../../config/endpoints';
+import { BACKEND_API_URL, SHIPPING_RATE_ENDPOINT, TAX_RATE_ENDPOINT } from '../../config/endpoints';
 
 export const calculateShippingPrice = async (variant, shippingInfo, regions) => {
 
@@ -14,7 +14,7 @@ export const calculateShippingPrice = async (variant, shippingInfo, regions) => 
   }
 
   try{
-    const standardShipping = await fetch(SHIPPING_RATE_ENDPOINT,{
+    const standardShipping = await fetch(BACKEND_API_URL + SHIPPING_RATE_ENDPOINT,{
         method: 'POST',
         headers : {
           'Content-Type' : 'application/json'
@@ -45,7 +45,7 @@ export const calculateTaxRate = async (shippingInfo, shippingData, regions) => {
     zip : shippingInfo.zipCode
   }
   try{
-    const taxData= await fetch(TAX_RATE_ENDPOINT,{
+    const taxData= await fetch(BACKEND_API_URL + TAX_RATE_ENDPOINT,{
         method: 'POST',
         headers : {
           'Content-Type' : 'application/json'

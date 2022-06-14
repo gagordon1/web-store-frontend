@@ -1,7 +1,7 @@
 import Button from '../../components/Button';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { PaymentForm, PaymentContainer, ButtonNavigator } from './CheckoutStyled';
-
+import { BACKEND_API_URL, CREATE_PAYMENT_INTENT_ENDPOINT, FINALIZE_ORDER_ENDPOINT } from '../../config/endpoints';
 
 
 const PaymentModule = (props) =>{
@@ -32,7 +32,7 @@ const PaymentModule = (props) =>{
     }
     let paymentIntentResult = {}
     try{
-      paymentIntentResult = await fetch('/create-payment-intent',{
+      paymentIntentResult = await fetch(BACKEND_API_URL + CREATE_PAYMENT_INTENT_ENDPOINT,{
           method: 'POST',
           headers : {
             'Content-Type' : 'application/json'
@@ -91,7 +91,7 @@ const PaymentModule = (props) =>{
     //Now get order and ship it
     //
     try{
-      await fetch('/finalize-order',{
+      await fetch(BACKEND_API_URL + FINALIZE_ORDER_ENDPOINT,{
           method: 'POST',
           headers : {
             'Content-Type' : 'application/json'

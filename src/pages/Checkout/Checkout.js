@@ -9,6 +9,7 @@ import PaymentModule from './PaymentModule';
 import { ProductImageAndTitle } from './ProductImageAndTitle';
 import { CheckoutContainer } from './CheckoutStyled'
 import { calculateShippingPrice, calculateTaxRate } from './PricingCalculations';
+import { BACKEND_API_URL, PRODUCT_DETAILS_ENDPOINT } from '../../config/endpoints';
 
 import axios from 'axios';
 
@@ -135,7 +136,7 @@ export default function Checkout(){
     useEffect(() => {
       console.log("getting product details")
       setLoading(true);
-      axios.get('/product-details/' + id)
+      axios.get(BACKEND_API_URL + PRODUCT_DETAILS_ENDPOINT + id)
       .then((resp) => {
         setProduct(resp.data);
         setLoading(false);
