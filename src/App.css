@@ -38,10 +38,6 @@ body{
   color: inherit;
 }
 
-.default-link: visited{
-  color: inherit;
-}
-
 .default-link:hover{
   text-decoration: underline;
 }

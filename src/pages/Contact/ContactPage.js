@@ -1,8 +1,8 @@
-
+import { ACCOUNT_EMAIL } from '../../config/StoreInfo'
 
 export default function ContactPage() {
   return (
-    <div> Contact </div>
+    <div> Info: {ACCOUNT_EMAIL}</div>
   )
 
 }
