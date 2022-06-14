@@ -31,6 +31,15 @@ export const ButtonNavigator = styled.div`
   justify-content: space-between;
 `
 
+export const CheckoutDiv = styled.div`
+  width: 400px;
+  justify-self: center;
+  @media (max-width: ${breakpoints.mobile}px){
+    width : 320px;
+  }
+
+`
+
 export const NewsCheckbox = styled.div`
   margin-bottom : 20px;
 `
@@ -42,16 +51,21 @@ export const CheckoutPageImage = styled.img`
   margin-right : auto;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 7px;
+  @media (max-width: ${breakpoints.mobile}px){
+    width : 300px;
+    height: auto;
+  }
 `
 
 
 export const FormContainer = styled.div`
-  width : 400px;
+  width : 80%;
   text-align : left;
+  justify-self : center;
 `
 
 export const DescriptionContainer = styled.div`
-  width : 400px;
+  width : 90%;
   text-align : left;
 `
 

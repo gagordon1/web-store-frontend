@@ -1,4 +1,4 @@
-import { CheckoutContainer, DescriptionContainer, FormContainer} from './CheckoutStyled';
+import { CheckoutContainer, DescriptionContainer, FormContainer, CheckoutDiv} from './CheckoutStyled';
 
  import { ProductImageAndTitle } from './ProductImageAndTitle';
 
@@ -12,7 +12,7 @@ export default function SizeAndDetails(props){
     return (
       <CheckoutContainer>
         <ProductImageAndTitle product={props.product}/>
-        <div>
+        <CheckoutDiv>
           <FormContainer>
             <h3> Size </h3>
             <DropdownMenu
@@ -41,7 +41,7 @@ export default function SizeAndDetails(props){
             }</p>
           </DescriptionContainer>
 
-        </div>
+        </CheckoutDiv>
       </CheckoutContainer>
     )
 }

@@ -25,11 +25,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://webstorebackendserver-env.eba-rb95pfkp.us-west-2.elasticbeanstalk.com/",
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
