@@ -63,7 +63,6 @@ const PaymentModule = (props) =>{
       return
     }
     console.log("Payment intent created");
-    console.log(paymentIntentResult);
     const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(
       paymentIntentResult.clientSecret, {
         payment_method : {
