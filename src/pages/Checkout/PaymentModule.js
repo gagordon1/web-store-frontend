@@ -136,7 +136,7 @@ const PaymentModule = (props) =>{
 
         <CardElement id="card-element"/>
         <ButtonNavigator>
-          <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to shipping details"}/>
+          <Button width={"48%"} onClick={() => props.setPage("shipping")} text={"Return to Shipping"}/>
           <Button width={"48%"} onClick={handleSubmit} text={"Pay"}/>
         </ButtonNavigator>
       </PaymentForm>
