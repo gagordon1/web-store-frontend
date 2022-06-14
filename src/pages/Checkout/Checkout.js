@@ -94,7 +94,6 @@ export default function Checkout(){
         alert("No size selected.")
       }
       else{
-        console.log(variant);
         setPage("shipping")
       }
     }
