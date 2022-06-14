@@ -1,4 +1,7 @@
-export const BACKEND_API_URL = "http://localhost:8080"
+
+import { PRODUCTION } from './StoreInfo';
+
+export const BACKEND_API_URL = PRODUCTION? "https://https://web-store-backend.herokuapp.com" : "http://localhost:8080"
 
 export const SHIPPING_RATE_ENDPOINT = "/shipping-rate";
 

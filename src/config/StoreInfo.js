@@ -17,3 +17,5 @@ export const ITEM_DESCRIPTIONS  = {
   275969640 : FORD_FOCUS_WIKIPEDIA_DESCRIPTION
 
 }
+
+export const PRODUCTION = true;
