@@ -21,10 +21,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts start"
   },
   "proxy": "http://http://webstorebackendserver-env.eba-rb95pfkp.us-west-2.elasticbeanstalk.com/",
   "eslintConfig": {
