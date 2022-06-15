@@ -8,7 +8,7 @@ import { SectionSeparator }  from './components/SectionSeparator';
 import { BottomSection } from './components/BottomSection'
 import styled from 'styled-components';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
