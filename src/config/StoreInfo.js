@@ -1,5 +1,9 @@
 export const FORD_FOCUS_WIKIPEDIA_DESCRIPTION = "The Ford Focus (first generation) is a compact car that was manufactured by Ford in Europe from 1998 to 2004 and by Ford in North America from 1999 to 2007. Ford began sales of the Focus to Europe in July 1998 and in North America during 1999 for the 2000 model year. Manufacturing in Argentina continued until 2008, and it was still on sale in Brazil until 2009."
 
+const INFLATION_DESCRIPTION = "In economics, inflation is a general increase in the prices of goods and services in an economy. When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money.[4][5] The opposite of inflation is deflation, a sustained decrease in the general price level of goods and services."
+
+export const ABOUT_PAGE_DESCRIPTION = INFLATION_DESCRIPTION;
+
 export const PRODUCTION = true;
 
 export const STORE_NAME = "Drip Town";
@@ -14,7 +18,7 @@ export const STRIPE_ACCOUNT_ID = "acct_1KQyC1LqSz5uCrfj";
 
 export const ACCOUNT_EMAIL = "downbeatcorp@gmail.com"
 
-export const DEFAULT_PRODUCT_DESCRIPTION = FORD_FOCUS_WIKIPEDIA_DESCRIPTION
+export const DEFAULT_PRODUCT_DESCRIPTION = INFLATION_DESCRIPTION;
 
 //maps id to description
 export const ITEM_DESCRIPTIONS  = {

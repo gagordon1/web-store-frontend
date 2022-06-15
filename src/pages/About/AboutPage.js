@@ -1,4 +1,4 @@
-import { FORD_FOCUS_WIKIPEDIA_DESCRIPTION } from '../../config/StoreInfo'
+import { ABOUT_PAGE_DESCRIPTION } from '../../config/StoreInfo'
 import styled from 'styled-components';
 
 const AboutContainer = styled.div`
@@ -10,7 +10,7 @@ const AboutContainer = styled.div`
 
 export default function AboutPage() {
   return (
-    <AboutContainer> {FORD_FOCUS_WIKIPEDIA_DESCRIPTION} </AboutContainer>
+    <AboutContainer> {ABOUT_PAGE_DESCRIPTION} </AboutContainer>
   )
 
 }
